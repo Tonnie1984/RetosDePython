@@ -8,11 +8,11 @@
  * - Expresión no balanceada: { a * ( c + d ) ] - 5 }
 
  """
-import re
 
 TEXT = input(" expersion: ")
 
-def use_regex(TEXT):
+
+def expresiones_balanceadas(TEXT):
     texto = TEXT.split()
     for i in texto:
         if i == "{" or "[" or "(":
@@ -29,15 +29,11 @@ def use_regex(TEXT):
         else:
             pass
 
-    texto ="".join(texto)
+    texto = "".join(texto)
     if "[" or "]" or "{" or "}" or "(" or ")" in texto:
         print(True)
     else:
         print(False)
 
 
-
-
-
-
-use_regex(TEXT)
+expresiones_balanceadas(TEXT)
