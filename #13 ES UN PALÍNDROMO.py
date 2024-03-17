@@ -6,6 +6,8 @@
  * NO se tienen en cuenta los espacios, signos de puntuación y tildes.
  * Ejemplo: Ana lleva al oso la avellana.
 """
+import re
+from unicodedata import normalize
 
 TEXTO = input("Texto:")
 
@@ -21,7 +23,12 @@ def es_palindromo(TEXTO):
         False
 
     """
-    texto = TEXTO.casefold().replace(" ", "")
+
+    texto = re.sub(r"([^n\u0300-\u036f]|n(?!\u0303(?![\u0300-\u036f])))[\u0300-\u036f]+", r"\1",
+                   normalize("NFD", TEXTO), 0, re.I
+                   )
+    texto = normalize("NFC", texto)
+
     texto1 = texto[::-1]
 
     if texto == texto1:
